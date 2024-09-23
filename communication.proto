@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package grpcProvider;
+
+option go_package = "./providers/grpcProvider";
+
+message Message {
+    bytes message = 1;
+    string messageType = 2;
+}
+
+service Services {
+    rpc Connect(stream Message) returns (stream Message){};
+}
