@@ -3,7 +3,6 @@ package utils
 import (
 	"bytes"
 	"gRPCClient/models"
-	"log"
 
 	"os/exec"
 	"strings"
@@ -20,7 +19,7 @@ func FetchComputerSystemDetails() (models.ComputerSystem, error) {
 	computerSystemDetails := unix.Utsname{}
 	err := unix.Uname(&computerSystemDetails)
 	if err != nil {
-		log.Println("FetchOperatingSystemDetails", "error fetching operating system information", nil, err)
+		LogError("FetchOperatingSystemDetails", "error fetching operating system information", nil, err)
 		return computerSystem, err
 	}
 
@@ -30,7 +29,7 @@ func FetchComputerSystemDetails() (models.ComputerSystem, error) {
 		// Set the currently logged in user.
 		out, err := exec.Command("users").Output()
 		if err != nil {
-			log.Println("FetchOperatingSystemDetails", "error executing the command", "users", err)
+			LogError("FetchOperatingSystemDetails", "error executing the command", "users", err)
 			computerSystem.CurrentLoggedInUser = ""
 		} else {
 			computerSystem.CurrentLoggedInUser = strings.TrimSpace(string(bytes.Trim(out, "\x00")))

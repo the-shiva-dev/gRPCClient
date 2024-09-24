@@ -6,11 +6,6 @@ const (
 	PingMessageType string = "Ping Message Type"
 	PongMessage     string = "Pong"
 	PongMessageType string = "Pong Message Type"
-
-	// Registration
-	RegistrationRequestMessageType    string = "Registration Request Message Type"
-	RegistrationFailedMessageType     string = "Registration Failed Message Type"
-	RegistrationSuccessfulMessageType string = "Registration Successful Message Type"
 )
 
 type ClientContext struct {
